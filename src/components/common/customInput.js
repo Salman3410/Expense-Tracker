@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
+import { Feather } from "@expo/vector-icons";
+
+export default function CustomInput({
+  placeholder,
+  Icon,
+  iconName,
+  value,
+  onChangeText,
+  secure = false,
+}) {
+  const [hidden, setHidden] = useState(secure);
+  return (
+    <View style={styles.row}>
+      {Icon && <Icon name={iconName} size={20} color="#999" />}
+      <TextInput
+        placeholder={placeholder}
+        style={styles.input}
+        secureTextEntry={secure}
+        value={value}
+        onChangeText={onChangeText}
+        placeholderTextColor="#999"
+      />
+
+      {/* Eye Toggle */}
+      {secure && (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => setHidden(!hidden)}
+        >
+          <Feather name={hidden ? "eye-off" : "eye"} size={20} color="#999" />
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    marginTop: 10,
+    backgroundColor: "#fff",
+  },
+  input: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 15,
+  },
+  email: {
+    flex: 1,
+    marginLeft: 3,
+  },
+  password: {
+    flex: 1,
+    marginLeft: 3,
+  },
+});
