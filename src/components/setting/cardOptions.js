@@ -4,48 +4,43 @@ import {
   Feather,
   Ionicons,
   MaterialCommunityIcons,
+  AntDesign,
 } from "@expo/vector-icons";
 
 const OPTIONS = [
   {
     id: 1,
-    Icon: Feather,
-    iconName: "user",
-    title: "Account",
-    color: "lightblue",
-  },
-  {
-    id: 2,
     Icon: Ionicons,
     iconName: "notifications-outline",
     title: "Notifications",
     color: "#90EE90",
   },
+
   {
-    id: 3,
-    Icon: MaterialCommunityIcons,
-    iconName: "lock-outline",
-    title: "Security",
-    color: "#B39EB5",
-  },
-  {
-    id: 4,
+    id: 2,
     Icon: Feather,
     iconName: "dollar-sign",
     title: "Currency",
     color: "#FFEE8C",
   },
   {
-    id: 5,
+    id: 3,
     Icon: Feather,
     iconName: "monitor",
     title: "Appearence",
   },
   {
-    id: 6,
+    id: 4,
+    Icon: AntDesign,
+    iconName: "clear",
+    title: "Clear data",
+    color: "#B39EB5",
+  },
+  {
+    id: 5,
     Icon: Feather,
     iconName: "help-circle",
-    title: "Help & Support",
+    title: "App info",
     color: "#CBCBCB",
   },
 ];

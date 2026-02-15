@@ -2,22 +2,22 @@ import { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 const OPTIONS = [
+  // {
+  //   id: 1,
+  //   title: "Day",
+  // },
   {
     id: 1,
-    title: "Day",
+    title: "Weekly",
   },
   {
     id: 2,
-    title: "Week",
+    title: "Monthly",
   },
-  {
-    id: 3,
-    title: "Months",
-  },
-  {
-    id: 4,
-    title: "Year",
-  },
+  // {
+  //   id: 4,
+  //   title: "Year",
+  // },
 ];
 
 const TRANSACTIONS = [
@@ -48,7 +48,7 @@ const TRANSACTIONS = [
 ];
 
 export default function RecentTransactions() {
-  const [active, setActive] = useState("Week");
+  const [active, setActive] = useState("Weekly");
   return (
     <View>
       <View style={styles.recent}>
@@ -62,6 +62,7 @@ export default function RecentTransactions() {
               key={item.id}
               style={[styles.barBtn, isActive && styles.activeBarBtn]}
               onPress={() => setActive(item.title)}
+              activeOpacity={0.8}
             >
               <Text style={[styles.barText, isActive && styles.activeBarText]}>
                 {item.title}
@@ -103,15 +104,15 @@ const styles = StyleSheet.create({
   },
   bar: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    width: "90%",
+    justifyContent: "space-around",
+    width: "70%",
     alignSelf: "center",
     backgroundColor: "#eee",
     paddingHorizontal: 14,
-    paddingVertical: 16,
+    paddingVertical: 8,
     borderRadius: 10,
     marginTop: 10,
-    elevation: 1,
+    elevation: 2,
   },
   barBtn: {
     paddingVertical: 6,
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    elevation: 2,
   },
   row: {
     flexDirection: "row",
