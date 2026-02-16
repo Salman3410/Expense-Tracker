@@ -1,28 +1,14 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function NotesInput() {
+export default function TitleInput() {
   return (
     <View style={styles.note}>
       <View style={styles.row}>
         <AntDesign name="message" size={24} color="#B39EB5" />
-        <Text style={styles.text}>Notes</Text>
+        <Text style={styles.text}>Title</Text>
       </View>
-      <TextInput
-        placeholder="Add Note"
-        style={styles.input}
-        numberOfLines={2}
-        multiline={true}
-      />
-      <TouchableOpacity activeOpacity={0.8} style={styles.addBtn}>
-        <Text style={styles.addText}>Add Note</Text>
-      </TouchableOpacity>
+      <TextInput placeholder="Title" style={styles.input} />
     </View>
   );
 }
@@ -45,9 +31,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "#eee",
     backgroundColor: "#fff",
-    elevation: 1,
+    paddingHorizontal: 10,
     marginTop: 5,
-    padding: 5,
   },
   addBtn: {
     width: "25%",

@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Fontisto, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
 import BrandHeader from "../../components/authScreen/brandHeader";
 import AuthGreeting from "../../components/authScreen/authGreeting";
-import TextLink from "../../components/authScreen/textLink";
 import AuthFooter from "../../components/authScreen/authFooter";
 import { useState } from "react";
+import PrimaryButton from "../../components/authScreen/primaryButton";
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -62,20 +62,15 @@ export default function RegisterScreen({ navigation }) {
           </Text>
         </View>
 
-        {/* Login Button */}
-        <TouchableOpacity
-          style={styles.buttonBox}
-          activeOpacity={0.8}
-          onPress={() => console.log("Sign Up Pressed")}
-        >
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-
-        {/* Footer */}
-        <View style={styles.registerBox}>
-          <AuthFooter title="Already have an account?" />
-          <TextLink title="Log In" onPress={() => navigation.goBack()} />
-        </View>
+        <PrimaryButton
+          title="Sign Up"
+          onPress={() => console.log("Sign Up Pressed!")}
+        />
+        <AuthFooter
+          title="Already have an account?"
+          sub="Log In"
+          onPress={() => navigation.goBack()}
+        />
       </View>
     </View>
   );
@@ -102,19 +97,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     marginBottom: 10,
-  },
-  buttonBox: {
-    marginTop: 20,
-    backgroundColor: "#000080",
-    paddingVertical: 13,
-    width: "100%",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "500",
   },
   terms: {
     marginTop: 20,

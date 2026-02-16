@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
 import { useState } from "react";
@@ -6,9 +6,9 @@ import useAuth from "../../hooks/useAuth";
 import BrandHeader from "../../components/authScreen/brandHeader";
 import AuthGreeting from "../../components/authScreen/authGreeting";
 import TextLink from "../../components/authScreen/textLink";
-import CustomButton from "../../components/common/customButton";
 import RememberMeRow from "../../components/authScreen/rememberMeRow";
 import AuthFooter from "../../components/authScreen/authFooter";
+import PrimaryButton from "../../components/authScreen/primaryButton";
 
 export default function LoginScreen({ navigation }) {
   const { login } = useAuth();
@@ -50,22 +50,12 @@ export default function LoginScreen({ navigation }) {
           />
         </View>
 
-        {/* Login Button */}
-        <TouchableOpacity
-          style={styles.buttonBox}
-          activeOpacity={0.8}
-          onPress={() => login(email, password)}
-        >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-
-        <View style={styles.registerBox}>
-          <AuthFooter title="Don't have an account?" />
-          <TextLink
-            title="Register"
-            onPress={() => navigation.navigate("Register")}
-          />
-        </View>
+        <PrimaryButton title="Login" onPress={() => login(email, password)} />
+        <AuthFooter
+          title="Don't have an account?"
+          sub="Register"
+          onPress={() => navigation.navigate("Register")}
+        />
       </View>
     </View>
   );
@@ -107,19 +97,7 @@ const styles = StyleSheet.create({
     color: "#290dc5",
     fontSize: 15,
   },
-  buttonBox: {
-    marginTop: 20,
-    backgroundColor: "#000080",
-    paddingVertical: 13,
-    width: "100%",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "500",
-  },
+
   registerBox: {
     flexDirection: "row",
     gap: 2,
