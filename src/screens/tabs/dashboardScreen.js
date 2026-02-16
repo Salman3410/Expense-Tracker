@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../../components/dashboard/card";
 import Services from "../../components/dashboard/services";
 import HeaderBar from "../../components/dashboard/headerBar";
-import AddExpenseButton from "../../components/dashboard/addExpenseButton";
+import CustomButton from "../../components/common/customButton";
 
 export default function DashboardScreen({ navigation }) {
   return (
@@ -11,7 +11,10 @@ export default function DashboardScreen({ navigation }) {
       <HeaderBar />
       <Card />
       <Services />
-      <AddExpenseButton navigation={navigation} />
+      <CustomButton
+        title="Add Expense"
+        onPress={() => navigation.navigate("AddExpense")}
+      />
     </SafeAreaView>
   );
 }

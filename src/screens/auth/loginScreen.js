@@ -3,17 +3,25 @@ import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import BrandHeader from "../../components/authScreen/brandHeader";
+import AuthGreeting from "../../components/authScreen/authGreeting";
+import TextLink from "../../components/authScreen/textLink";
+import CustomButton from "../../components/common/customButton";
+import RememberMeRow from "../../components/authScreen/rememberMeRow";
+import AuthFooter from "../../components/authScreen/authFooter";
 
 export default function LoginScreen({ navigation }) {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(false);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>BUDGET & CO.</Text>
-      <Text style={styles.greeting}>Welcome Back!</Text>
-      <Text style={styles.tagline}>Sign in to manage your money</Text>
+      <BrandHeader title="BUDGET & CO." />
+      <AuthGreeting
+        title="Welcome Back!"
+        description="Sign in to manage your money"
+      />
 
       <View style={styles.form}>
         {/* Inputs */}
@@ -34,33 +42,12 @@ export default function LoginScreen({ navigation }) {
         />
 
         {/* Remember & Forget */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: 20,
-          }}
-        >
-          <View style={styles.rememberBox}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => setRemember(!remember)}
-            >
-              <MaterialCommunityIcons
-                name={remember ? "checkbox-marked" : "checkbox-blank-outline"}
-                size={24}
-                color={remember ? "#000" : "#999"}
-              />
-            </TouchableOpacity>
-            <Text style={styles.remember}>Remember Me</Text>
-          </View>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => console.log("Forgot Password Pressed")}
-          >
-            <Text style={styles.forgot}>Forgot password?</Text>
-          </TouchableOpacity>
+        <View style={styles.rememberRow}>
+          <RememberMeRow />
+          <TextLink
+            title="Forgot password?"
+            onPress={() => console.log("Forgot Password Pressed!")}
+          />
         </View>
 
         {/* Login Button */}
@@ -73,13 +60,11 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
 
         <View style={styles.registerBox}>
-          <Text style={styles.regTagline}>Don't have an account?</Text>
-          <TouchableOpacity
-            activeOpacity={0.7}
+          <AuthFooter title="Don't have an account?" />
+          <TextLink
+            title="Register"
             onPress={() => navigation.navigate("Register")}
-          >
-            <Text style={styles.regBtnText}>Register</Text>
-          </TouchableOpacity>
+          />
         </View>
       </View>
     </View>
@@ -91,22 +76,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  header: {
-    fontSize: 30,
-    color: "#000080",
-    fontWeight: "600",
-    marginBottom: 10,
-  },
-  greeting: {
-    fontSize: 22,
-    fontWeight: "500",
-  },
-  tagline: {
-    color: "#555",
-    fontSize: 16,
-    fontWeight: "400",
-    marginBottom: 10,
   },
   row: {
     flexDirection: "row",
@@ -128,14 +97,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 3,
   },
-  rememberBox: {
+  rememberRow: {
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    gap: 5,
-  },
-  remember: {
-    color: "#000080",
-    fontSize: 15,
+    marginTop: 20,
   },
   forgot: {
     color: "#290dc5",
@@ -153,10 +119,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "500",
-  },
-  regTagline: {
-    fontSize: 16,
-    color: "#555",
   },
   registerBox: {
     flexDirection: "row",

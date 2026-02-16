@@ -4,11 +4,11 @@ import { useRef } from "react";
 import AddExpenseHeader from "../../components/addExpense/addExpenseHeader";
 import AmountInput from "../../components/addExpense/amountInput";
 import NotesInput from "../../components/addExpense/notesInput";
-import SubmitExpenseButton from "../../components/addExpense/submitExpenseButton";
 import ExpenseBottomSheet from "../../components/addExpense/expenseBottomSheet";
 import DateInput from "../../components/addExpense/dateInput";
 import CategoryInput from "../../components/addExpense/categoryInput";
 import PaymentInput from "../../components/addExpense/paymentInput";
+import CustomButton from "../../components/common/customButton";
 
 export default function AddExpenseScreen({ navigation }) {
   const bottomSheetRef = useRef(null);
@@ -20,7 +20,7 @@ export default function AddExpenseScreen({ navigation }) {
       <DateInput onPress={() => bottomSheetRef.current?.expand()} />
       <PaymentInput onPress={() => bottomSheetRef.current?.expand()} />
       <NotesInput />
-      <SubmitExpenseButton />
+      <CustomButton title="Submit" onPress={() => navigation.goBack()} />
       <ExpenseBottomSheet ref={bottomSheetRef} />
     </SafeAreaView>
   );

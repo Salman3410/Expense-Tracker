@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function AddExpenseButton({ navigation }) {
+export default function CustomButton({ onPress, title }) {
   return (
     <TouchableOpacity
       style={styles.expenseBtn}
       activeOpacity={0.8}
-      onPress={() => navigation.navigate("AddExpense")}
+      onPress={onPress}
     >
-      <Text style={styles.btnText}>Add Expense</Text>
+      <Text style={styles.btnText}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: "90%",
     backgroundColor: "#000080",
     paddingVertical: 14,
-    borderRadius: 20,
+    borderRadius: 10,
     alignItems: "center",
   },
   btnText: {

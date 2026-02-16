@@ -1,41 +1,60 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Fontisto, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
+import BrandHeader from "../../components/authScreen/brandHeader";
+import AuthGreeting from "../../components/authScreen/authGreeting";
+import TextLink from "../../components/authScreen/textLink";
+import AuthFooter from "../../components/authScreen/authFooter";
+import { useState } from "react";
 
 export default function RegisterScreen({ navigation }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(password);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>BUDGET & CO.</Text>
-      <Text style={styles.greeting}>Create Your Account</Text>
-      <Text style={styles.tagline}>Sign up to start managing your money</Text>
+      <BrandHeader title="BUDGET & CO." />
+      <AuthGreeting
+        title="Create Your Account"
+        description="Sign up to start managing your money."
+      />
 
       <View style={styles.form}>
         {/* Inputs */}
-        <CustomInput placeholder="Full Name" Icon={Feather} iconName="user" />
+        <CustomInput
+          placeholder="Full Name"
+          Icon={Feather}
+          iconName="user"
+          value={name}
+          onChangeText={setName}
+        />
         <CustomInput
           placeholder="Email Address"
           Icon={Fontisto}
           iconName="email"
+          value={email}
+          onChangeText={setEmail}
         />
         <CustomInput
           placeholder="Password"
           Icon={MaterialCommunityIcons}
           iconName="lock-outline"
           secure={true}
+          value={password}
+          onChangeText={setPassword}
         />
         <CustomInput
           placeholder="Confirm Password"
           Icon={MaterialCommunityIcons}
           iconName="lock-check-outline"
           secure={true}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
         />
 
-        {/* Remember & Forget */}
-        <View
-          style={{
-            marginTop: 20,
-          }}
-        >
+        <View style={styles.terms}>
           <Text style={styles.regTagline}>
             By signing up, you agree to the{" "}
             <Text style={styles.regBtnText}>Terms of Service</Text> and{" "}
@@ -52,14 +71,10 @@ export default function RegisterScreen({ navigation }) {
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
 
+        {/* Footer */}
         <View style={styles.registerBox}>
-          <Text style={styles.regTagline}>Already have an account?</Text>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => navigation.goBack()}
-          >
-            <Text style={styles.regBtnText}>Log In</Text>
-          </TouchableOpacity>
+          <AuthFooter title="Already have an account?" />
+          <TextLink title="Log In" onPress={() => navigation.goBack()} />
         </View>
       </View>
     </View>
@@ -100,6 +115,9 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "500",
+  },
+  terms: {
+    marginTop: 20,
   },
   regTagline: {
     fontSize: 16,

@@ -2,7 +2,7 @@ import { Text } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useMemo } from "react";
 
-export default function ExpenseBottomSheet({ props, ref }) {
+export default function ExpenseBottomSheet({ ref }) {
   const snapPoints = useMemo(() => ["18%", "40%"], []);
   return (
     <BottomSheet
