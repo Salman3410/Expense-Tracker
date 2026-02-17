@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-export default function AmountInput() {
+export default function AmountInput({ value, onChangeText }) {
   return (
     <View style={styles.amount}>
       <View style={styles.row}>
@@ -9,7 +9,12 @@ export default function AmountInput() {
         <Text style={styles.text}>Amount</Text>
       </View>
       <View>
-        <TextInput placeholder="$0.00" keyboardType="number-pad" />
+        <TextInput
+          placeholder="$0.00"
+          keyboardType="number-pad"
+          value={value}
+          onChangeText={onChangeText}
+        />
       </View>
     </View>
   );

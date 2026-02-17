@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function TitleInput() {
+export default function TitleInput({ value, onChangeText }) {
   return (
     <View style={styles.note}>
       <View style={styles.row}>
         <AntDesign name="message" size={24} color="#B39EB5" />
         <Text style={styles.text}>Title</Text>
       </View>
-      <TextInput placeholder="Title" style={styles.input} />
+      <TextInput
+        placeholder="Title"
+        style={styles.input}
+        value={value}
+        onChangeText={onChangeText}
+      />
     </View>
   );
 }

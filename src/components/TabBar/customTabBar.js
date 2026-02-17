@@ -28,10 +28,10 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
             <Ionicons
               name={icons[route.name]}
               size={24}
-              color={isFocused ? "#4CC9F0" : "#999"}
+              color={isFocused ? "#000080" : "#999"}
             />
 
-            <Text style={{ color: isFocused ? "#4CC9F0" : "#999" }}>
+            <Text style={{ color: isFocused ? "#000080" : "#999" }}>
               {route.name}
             </Text>
           </TouchableOpacity>

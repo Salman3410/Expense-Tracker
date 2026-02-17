@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
-export default function CategoryInput({ onPress }) {
+export default function CategoryInput({ onPress, value }) {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -13,7 +13,7 @@ export default function CategoryInput({ onPress }) {
         activeOpacity={0.8}
         onPress={onPress}
       >
-        <Text style={styles.subText}>Shopping</Text>
+        <Text style={styles.subText}>{value}</Text>
         <MaterialIcons name="keyboard-arrow-right" size={24} color="#999" />
       </TouchableOpacity>
     </View>
