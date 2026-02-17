@@ -4,6 +4,7 @@ import RootNavigator from "./src/navigation/rootNavigator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { AuthProvider } from "./src/context/authContext";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <BottomSheetModalProvider>
         <AuthProvider>
           <NavigationContainer>
+            <StatusBar />
             <RootNavigator />
           </NavigationContainer>
         </AuthProvider>
