@@ -6,7 +6,7 @@ const categories = ["Shopping", "Subscription", "Exchange"];
 const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa"];
 
 const ExpenseBottomSheet = forwardRef(({ type, onSelect }, ref) => {
-  const snapPoints = useMemo(() => ["18%", "40%"], []);
+  const snapPoints = useMemo(() => ["18%", "35%"], []);
 
   const data =
     type === "payment" ? payments : type === "category" ? categories : [];

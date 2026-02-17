@@ -1,7 +1,32 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 
-export default function DateInput({ onPress }) {
+export default function DateInput({}) {
+  const [date, setDate] = useState(new Date(1598051730000));
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChange,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  const showTimepicker = () => {
+    showMode("time");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -11,9 +36,10 @@ export default function DateInput({ onPress }) {
       <TouchableOpacity
         style={styles.rightRow}
         activeOpacity={0.8}
-        onPress={onPress}
+        onPress={showDatepicker}
       >
-        <Text style={styles.subText}>June 25, 2024</Text>
+        <Text style={styles.subText}>{date.toDateString()}</Text>
+
         <MaterialIcons name="keyboard-arrow-right" size={24} color="#999" />
       </TouchableOpacity>
     </View>

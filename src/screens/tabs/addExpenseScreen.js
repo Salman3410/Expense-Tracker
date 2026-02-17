@@ -9,6 +9,7 @@ import CategoryInput from "../../components/addExpense/categoryInput";
 import PaymentInput from "../../components/addExpense/paymentInput";
 import CustomButton from "../../components/common/customButton";
 import TitleInput from "../../components/addExpense/titleInput";
+import ImageInput from "../../components/addExpense/imageInput";
 
 export default function AddExpenseScreen({ navigation }) {
   const bottomSheetRef = useRef(null);
@@ -36,8 +37,9 @@ export default function AddExpenseScreen({ navigation }) {
       <AmountInput value={amount} onChangeText={setAmount} />
       <TitleInput value={title} onChangeText={setTitle} />
       <CategoryInput value={category} onPress={() => openSheet("category")} />
-      <DateInput onPress={() => bottomSheetRef.current?.expand()} />
+      <DateInput />
       <PaymentInput value={payment} onPress={() => openSheet("payment")} />
+      <ImageInput />
       <CustomButton title="Submit" onPress={() => navigation.goBack()} />
       <ExpenseBottomSheet
         ref={bottomSheetRef}
