@@ -1,24 +1,4 @@
-import { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-
-const OPTIONS = [
-  // {
-  //   id: 1,
-  //   title: "Day",
-  // },
-  {
-    id: 1,
-    title: "Weekly",
-  },
-  {
-    id: 2,
-    title: "Monthly",
-  },
-  // {
-  //   id: 4,
-  //   title: "Year",
-  // },
-];
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 
 const TRANSACTIONS = [
   {
@@ -47,32 +27,16 @@ const TRANSACTIONS = [
   },
 ];
 
-export default function RecentTransactions() {
-  const [active, setActive] = useState("Weekly");
+export default function TransactionsList({ label }) {
   return (
-    <View>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.container}
+    >
       <View style={styles.recent}>
-        <Text style={styles.recentText}>Recent Transactions</Text>
-      </View>
-      <View style={styles.bar}>
-        {OPTIONS.map((item) => {
-          const isActive = active === item.title;
-          return (
-            <TouchableOpacity
-              key={item.id}
-              style={[styles.barBtn, isActive && styles.activeBarBtn]}
-              onPress={() => setActive(item.title)}
-              activeOpacity={0.8}
-            >
-              <Text style={[styles.barText, isActive && styles.activeBarText]}>
-                {item.title}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+        <Text style={styles.recentText}>{label}</Text>
       </View>
 
-      {/* Transactions */}
       {TRANSACTIONS.map((item) => (
         <View style={styles.transactions} key={item.id}>
           <View style={styles.row}>
@@ -88,11 +52,14 @@ export default function RecentTransactions() {
           </View>
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 40,
+  },
   recent: {
     paddingHorizontal: 20,
   },
@@ -101,35 +68,6 @@ const styles = StyleSheet.create({
     color: "#000080",
     fontWeight: "500",
     marginTop: 30,
-  },
-  bar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "70%",
-    alignSelf: "center",
-    backgroundColor: "#eee",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 10,
-    marginTop: 10,
-    elevation: 2,
-  },
-  barBtn: {
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-  },
-  activeBarBtn: {
-    backgroundColor: "#000080",
-  },
-  activeBarText: {
-    color: "#fff",
-    fontWeight: "600",
-  },
-  barText: {
-    color: "#999",
-    fontSize: 16,
-    fontWeight: "500",
   },
   transactions: {
     marginTop: 20,
