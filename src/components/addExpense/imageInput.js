@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
-export default function ImageInput() {
-  const [image, setImage] = useState(null);
-
+export default function ImageInput({ image, setImage }) {
   const pickImage = async () => {
     const permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -17,7 +21,7 @@ export default function ImageInput() {
       return;
     }
 
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: "images",
       allowsEditing: true,
       aspect: [4, 3],
@@ -30,29 +34,45 @@ export default function ImageInput() {
     }
   };
   return (
-    <View style={styles.container}>
+    <View>
+      <Text style={styles.text}>Receipt</Text>
       <TouchableOpacity
         style={styles.btn}
         activeOpacity={0.8}
         onPress={pickImage}
       >
-        <Text style={styles.btnText}>Select an Image</Text>
+        {image ? (
+          <Image source={{ uri: image }} style={styles.preview} />
+        ) : (
+          <Text style={styles.btnText}>Select an Image</Text>
+        )}
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  text: {
+    fontSize: 16,
+    fontWeight: "400",
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
+  preview: {
+    width: "100%",
+    height: 180,
+    borderRadius: 10,
+  },
   btn: {
-    width: "90%",
-    backgroundColor: "#fff",
+    width: "100%",
+    backgroundColor: "#eee",
     alignSelf: "center",
     alignItems: "center",
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 10,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
   btnText: {
     fontSize: 15,

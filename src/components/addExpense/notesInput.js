@@ -1,27 +1,26 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import CustomInput from "../common/customInput";
 
-export default function AmountInput({ value, onChangeText }) {
+export default function NotesInput({ value, onChangeText }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Amount</Text>
-      <View style={styles.amount}>
+    <View>
+      <Text style={styles.text}>Notes</Text>
+      <View style={styles.notes}>
         <CustomInput
-          placeholder="$0.00"
+          placeholder="Add Note"
           value={value}
           onChangeText={onChangeText}
-          keyboardType="numeric"
+          multiline={true}
         />
-        {/* <Feather name="dollar-sign" size={24} color="#ccc" /> */}
+        {/* <MaterialIcons name="event-note" size={24} color="#ccc" /> */}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  amount: {
+  notes: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

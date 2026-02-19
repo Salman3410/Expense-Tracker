@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, View } from "react-native";
 import Card from "../../components/dashboard/card";
 import Services from "../../components/dashboard/services";
 import HeaderBar from "../../components/dashboard/headerBar";
@@ -7,7 +6,7 @@ import CustomButton from "../../components/common/customButton";
 
 export default function DashboardScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <HeaderBar />
       <Card />
       <Services />
@@ -15,7 +14,7 @@ export default function DashboardScreen({ navigation }) {
         title="Add Expense"
         onPress={() => navigation.navigate("AddExpense")}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

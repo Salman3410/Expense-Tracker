@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   transactions: {
-    marginTop: 20,
+    marginTop: 10,
     backgroundColor: "#fff",
     width: "90%",
     alignSelf: "center",

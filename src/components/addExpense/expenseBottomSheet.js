@@ -1,23 +1,37 @@
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import { useMemo, forwardRef } from "react";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+  BottomSheetModal,
+} from "@gorhom/bottom-sheet";
+import { useMemo, forwardRef, useCallback } from "react";
 
 const categories = ["Shopping", "Subscription", "Exchange"];
 const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa"];
 
 const ExpenseBottomSheet = forwardRef(({ type, onSelect }, ref) => {
-  const snapPoints = useMemo(() => ["18%", "35%"], []);
-
   const data =
     type === "payment" ? payments : type === "category" ? categories : [];
 
+  const renderBackdrop = useCallback(
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        disappearsOnIndex={-1}
+        opacity={0.5}
+        pressBehavior="close"
+      />
+    ),
+    [],
+  );
+
   return (
-    <BottomSheet
+    <BottomSheetModal
       ref={ref}
-      snapPoints={snapPoints}
-      index={-1}
+      enableDynamicSizing={true}
+      backdropComponent={renderBackdrop}
       enablePanDownToClose
-      backgroundStyle={{ borderRadius: 25 }}
+      backgroundStyle={{ borderRadius: 25, backgroundColor: "#fff" }}
       handleIndicatorStyle={{ backgroundColor: "#ccc" }}
     >
       <BottomSheetView style={styles.container}>
@@ -26,12 +40,13 @@ const ExpenseBottomSheet = forwardRef(({ type, onSelect }, ref) => {
             key={item}
             style={styles.item}
             onPress={() => onSelect(item)}
+            activeOpacity={0.8}
           >
             <Text style={styles.text}>{item}</Text>
           </TouchableOpacity>
         ))}
       </BottomSheetView>
-    </BottomSheet>
+    </BottomSheetModal>
   );
 });
 

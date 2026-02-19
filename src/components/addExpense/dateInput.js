@@ -1,20 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 
-export default function DateInput({}) {
-  const [date, setDate] = useState(new Date(1598051730000));
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDate(currentDate);
+export default function DateInput({ value, onChange }) {
+  const handleChange = (event, selectedDate) => {
+    if (selectedDate) {
+      onChange(selectedDate);
+    }
   };
 
   const showMode = (currentMode) => {
     DateTimePickerAndroid.open({
-      value: date,
-      onChange,
+      value: value,
+      onChange: handleChange,
       mode: currentMode,
       is24Hour: true,
     });
@@ -29,38 +27,42 @@ export default function DateInput({}) {
   };
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Date</Text>
       <View style={styles.row}>
-        <Ionicons name="calendar" size={24} color="#290dc5" />
-        <Text style={styles.text}>Date</Text>
+        <Text style={styles.subText}>{value.toDateString()}</Text>
+        <TouchableOpacity
+          style={styles.rightRow}
+          activeOpacity={0.8}
+          onPress={() => showMode("date")}
+        >
+          <Ionicons name="calendar" size={24} color="#ccc" />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={styles.rightRow}
-        activeOpacity={0.8}
-        onPress={showDatepicker}
-      >
-        <Text style={styles.subText}>{date.toDateString()}</Text>
-
-        <MaterialIcons name="keyboard-arrow-right" size={24} color="#999" />
-      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "90%",
-    backgroundColor: "#fff",
+  // container: { flexDirection: "row" },
+  row: {
+    width: "100%",
+    backgroundColor: "#eee",
     padding: 12,
     alignSelf: "center",
-    elevation: 2,
     marginTop: 10,
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
-  row: { flexDirection: "row" },
   rightRow: { flexDirection: "row" },
-  text: { fontSize: 16, fontWeight: "400", marginLeft: 5 },
+  text: {
+    fontSize: 16,
+    fontWeight: "400",
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
   subText: { color: "#999", fontSize: 15, marginRight: 5 },
 });

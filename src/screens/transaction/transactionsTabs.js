@@ -20,7 +20,7 @@ export default function TransactionsTabs() {
           height: "100%",
           borderRadius: 10,
         },
-        tabBarLabelStyle: { fontWeight: "600" },
+        tabBarLabelStyle: { fontWeight: "700" },
         tabBarActiveTintColor: "#fff",
         tabBarInactiveTintColor: "#777",
       }}

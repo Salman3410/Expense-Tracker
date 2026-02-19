@@ -10,6 +10,8 @@ export default function CustomInput({
   value,
   onChangeText,
   secure = false,
+  keyboardType,
+  multiline,
 }) {
   const [hidden, setHidden] = useState(secure);
   return (
@@ -18,10 +20,12 @@ export default function CustomInput({
       <TextInput
         placeholder={placeholder}
         style={styles.input}
-        secureTextEntry={secure}
+        secureTextEntry={hidden}
         value={value}
         onChangeText={onChangeText}
         placeholderTextColor="#999"
+        keyboardType={keyboardType}
+        multiline={multiline}
       />
 
       {/* Eye Toggle */}
@@ -42,11 +46,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "#ccc",
     borderRadius: 10,
     paddingHorizontal: 12,
     marginTop: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#eee",
   },
   input: {
     flex: 1,

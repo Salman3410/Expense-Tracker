@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import ExpenseChart from "../../components/analytics/expenseChart";
 import TransactionsTabs from "../transaction/transactionsTabs";
 
 export default function AnalyticsScreen() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Expenses</Text>
       </View>
@@ -13,7 +12,7 @@ export default function AnalyticsScreen() {
       <View style={styles.tabsContainer}>
         <TransactionsTabs />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

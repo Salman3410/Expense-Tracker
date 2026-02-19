@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView, StyleSheet } from "react-native";
 import { useRef, useState } from "react";
 import AddExpenseHeader from "../../components/addExpense/addExpenseHeader";
 import AmountInput from "../../components/addExpense/amountInput";
@@ -10,19 +9,25 @@ import PaymentInput from "../../components/addExpense/paymentInput";
 import CustomButton from "../../components/common/customButton";
 import TitleInput from "../../components/addExpense/titleInput";
 import ImageInput from "../../components/addExpense/imageInput";
+import NotesInput from "../../components/addExpense/notesInput";
+import useExpense from "../../hooks/useExpense";
 
 export default function AddExpenseScreen({ navigation }) {
+  const { addExpense } = useExpense();
   const bottomSheetRef = useRef(null);
 
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
   const [sheetType, setSheetType] = useState(null);
   const [category, setCategory] = useState("Shopping");
   const [payment, setPayement] = useState("Debit Card");
+  const [date, setDate] = useState(new Date());
+  const [image, setImage] = useState(null);
 
   const openSheet = (type) => {
     setSheetType(type);
-    bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
   };
 
   const onSelect = (value) => {
@@ -31,27 +36,47 @@ export default function AddExpenseScreen({ navigation }) {
 
     bottomSheetRef.current?.close();
   };
+
+  const onSubmit = () => {
+    if (!amount || !title) return;
+
+    const newExpense = {
+      id: Date.now().toString(),
+      amount: Number(amount),
+      title,
+      note,
+      category,
+      payment,
+      date,
+      image,
+    };
+    addExpense(newExpense);
+    navigation.goBack();
+  };
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <AddExpenseHeader navigation={navigation} />
       <AmountInput value={amount} onChangeText={setAmount} />
       <TitleInput value={title} onChangeText={setTitle} />
+      <NotesInput value={note} onChangeText={setNote} />
+
       <CategoryInput value={category} onPress={() => openSheet("category")} />
-      <DateInput />
+      <DateInput value={date} onChange={setDate} />
       <PaymentInput value={payment} onPress={() => openSheet("payment")} />
-      <ImageInput />
-      <CustomButton title="Submit" onPress={() => navigation.goBack()} />
+      <ImageInput image={image} setImage={setImage} />
+      <CustomButton title="Submit" onPress={onSubmit} />
       <ExpenseBottomSheet
         ref={bottomSheetRef}
         type={sheetType}
         onSelect={onSelect}
       />
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding: 8,
+    paddingBottom: 60,
   },
 });
