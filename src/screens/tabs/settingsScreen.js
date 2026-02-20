@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 22,
     fontWeight: "600",
+    letterSpacing: 1,
   },
 });

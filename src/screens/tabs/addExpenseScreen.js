@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { Alert, ScrollView, StyleSheet } from "react-native";
 import { useRef, useState } from "react";
 import AddExpenseHeader from "../../components/addExpense/addExpenseHeader";
 import AmountInput from "../../components/addExpense/amountInput";
@@ -38,7 +38,10 @@ export default function AddExpenseScreen({ navigation }) {
   };
 
   const onSubmit = () => {
-    if (!amount || !title) return;
+    if (!amount || !title) {
+      console.log(Alert.alert("Failed", "Must enter Amount and Title."));
+      return;
+    }
 
     const newExpense = {
       id: Date.now().toString(),
@@ -55,7 +58,7 @@ export default function AddExpenseScreen({ navigation }) {
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <AddExpenseHeader navigation={navigation} />
+      <AddExpenseHeader navigation={navigation} header="Add Expense" />
       <AmountInput value={amount} onChangeText={setAmount} />
       <TitleInput value={title} onChangeText={setTitle} />
       <NotesInput value={note} onChangeText={setNote} />

@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 
 const TRANSACTIONS = [
   {
@@ -27,7 +34,7 @@ const TRANSACTIONS = [
   },
 ];
 
-export default function TransactionsList({ label }) {
+export default function TransactionsList({ label, onPress }) {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -38,7 +45,12 @@ export default function TransactionsList({ label }) {
       </View>
 
       {TRANSACTIONS.map((item) => (
-        <View style={styles.transactions} key={item.id}>
+        <TouchableOpacity
+          style={styles.transactions}
+          key={item.id}
+          activeOpacity={0.8}
+          onPress={onPress}
+        >
           <View style={styles.row}>
             <Image source={item.image} style={styles.image} />
             <View>
@@ -50,7 +62,7 @@ export default function TransactionsList({ label }) {
             <Text style={styles.amount}>-Rs{item.amount}</Text>
             <Text style={styles.date}>{item.date}</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );

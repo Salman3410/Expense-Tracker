@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import AuthStack from "./authStack";
 import TabNavigator from "./tabNavigator";
 import AddExpenseScreen from "../screens/tabs/addExpenseScreen";
+import ExpenseDetailsScreen from "../screens/expense/expenseDetailsScreen";
+import EditExpenseScreen from "../screens/expense/editExpenseScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +25,11 @@ export default function RootNavigator() {
             component={AddExpenseScreen}
             options={{ presentation: "modal" }}
           />
+          <Stack.Screen
+            name="DetailsExpense"
+            component={ExpenseDetailsScreen}
+          />
+          <Stack.Screen name="EditExpense" component={EditExpenseScreen} />
         </>
       )}
     </Stack.Navigator>
