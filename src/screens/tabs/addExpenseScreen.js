@@ -62,7 +62,6 @@ export default function AddExpenseScreen({ navigation }) {
       <AmountInput value={amount} onChangeText={setAmount} />
       <TitleInput value={title} onChangeText={setTitle} />
       <NotesInput value={note} onChangeText={setNote} />
-
       <CategoryInput value={category} onPress={() => openSheet("category")} />
       <DateInput value={date} onChange={setDate} />
       <PaymentInput value={payment} onPress={() => openSheet("payment")} />

@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import CustomInput from "../common/customInput";
 
 export default function AmountInput({ value, onChangeText }) {
@@ -12,8 +11,8 @@ export default function AmountInput({ value, onChangeText }) {
           value={value}
           onChangeText={onChangeText}
           keyboardType="numeric"
+          showIcon={false}
         />
-        {/* <Feather name="dollar-sign" size={24} color="#ccc" /> */}
       </View>
     </View>
   );

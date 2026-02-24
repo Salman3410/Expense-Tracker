@@ -31,6 +31,7 @@ export default function LoginScreen({ navigation }) {
           iconName="email"
           value={email}
           onChangeText={setEmail}
+          showIcon={true}
         />
         <CustomInput
           placeholder="Password"
@@ -39,6 +40,7 @@ export default function LoginScreen({ navigation }) {
           secure={true}
           value={password}
           onChangeText={setPassword}
+          showIcon={true}
         />
 
         {/* Remember & Forget */}
@@ -66,15 +68,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    marginTop: 10,
   },
   input: {
     width: "100%",

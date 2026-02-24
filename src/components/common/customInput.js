@@ -7,6 +7,7 @@ export default function CustomInput({
   placeholder,
   Icon,
   iconName,
+  showIcon = false,
   value,
   onChangeText,
   secure = false,
@@ -16,7 +17,7 @@ export default function CustomInput({
   const [hidden, setHidden] = useState(secure);
   return (
     <View style={styles.row}>
-      {Icon && <Icon name={iconName} size={20} color="#999" />}
+      {showIcon && Icon && <Icon name={iconName} size={20} color="#999" />}
       <TextInput
         placeholder={placeholder}
         style={styles.input}
@@ -48,13 +49,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,
-    paddingHorizontal: 12,
-    marginTop: 10,
+    paddingHorizontal: 6,
+    marginTop: 5,
     backgroundColor: "#eee",
   },
   input: {
     flex: 1,
-    marginLeft: 10,
     fontSize: 15,
   },
   email: {

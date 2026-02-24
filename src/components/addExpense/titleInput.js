@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { AntDesign, Entypo } from "@expo/vector-icons";
+
 import CustomInput from "../common/customInput";
 
 export default function TitleInput({ value, onChangeText }) {
@@ -12,7 +12,6 @@ export default function TitleInput({ value, onChangeText }) {
           value={value}
           onChangeText={onChangeText}
         />
-        {/* <Entypo name="new-message" size={24} color="#ccc" /> */}
       </View>
     </View>
   );

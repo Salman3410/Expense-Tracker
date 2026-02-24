@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from "react-native";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import CustomInput from "../common/customInput";
 
 export default function NotesInput({ value, onChangeText }) {
@@ -13,7 +12,6 @@ export default function NotesInput({ value, onChangeText }) {
           onChangeText={onChangeText}
           multiline={true}
         />
-        {/* <MaterialIcons name="event-note" size={24} color="#ccc" /> */}
       </View>
     </View>
   );

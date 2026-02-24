@@ -65,10 +65,11 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: "100%",
+    height: 180,
     backgroundColor: "#eee",
     alignSelf: "center",
     alignItems: "center",
-    paddingVertical: 10,
+    justifyContent: "center",
     borderRadius: 10,
     marginTop: 10,
     borderWidth: 1,

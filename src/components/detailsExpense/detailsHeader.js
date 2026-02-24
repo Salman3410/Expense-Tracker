@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-export default function DetailsHeader({ title }) {
+export default function DetailsHeader({ title, onPress }) {
   const navigation = useNavigation();
   return (
     <View style={styles.header}>
@@ -17,7 +17,7 @@ export default function DetailsHeader({ title }) {
       <TouchableOpacity
         style={styles.blank}
         activeOpacity={0.8}
-        onPress={() => navigation.navigate("EditExpense")}
+        onPress={onPress}
       >
         <Feather name="edit" size={24} color="black" />
       </TouchableOpacity>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   headerText: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: "600",
     letterSpacing: 1,
   },

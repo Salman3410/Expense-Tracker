@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function ExpenseField({ label, value }) {
+export default function ExpensePayment({ payment }) {
   return (
     <View style={styles.border}>
-      <Text style={styles.text}>
-        {label}: <Text style={styles.date}>{value}</Text>
-      </Text>
+      <Text style={styles.text}>{payment}</Text>
     </View>
   );
 }
@@ -19,8 +17,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "400",
-  },
-  date: {
-    fontWeight: "600",
   },
 });

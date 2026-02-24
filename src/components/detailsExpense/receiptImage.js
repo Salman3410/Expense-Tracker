@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "400",
   },
   image: {

@@ -16,7 +16,7 @@ export default function App() {
           <ExpenseProvider>
             <NavigationContainer>
               <SafeAreaView style={{ flex: 1 }}>
-                <StatusBar backgroundColor="#eee" />
+                <StatusBar backgroundColor="#0000" />
                 <RootNavigator />
               </SafeAreaView>
             </NavigationContainer>

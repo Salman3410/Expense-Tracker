@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 export default function CategoryInput({ onPress, value }) {
   return (
@@ -24,9 +24,10 @@ const styles = StyleSheet.create({
   row: {
     width: "100%",
     backgroundColor: "#eee",
-    padding: 12,
+    paddingVertical: 9,
+    paddingHorizontal: 10,
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
@@ -41,5 +42,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 10,
   },
-  subText: { color: "#999", fontSize: 15, marginRight: 5 },
+  subText: { color: "#000", fontSize: 15, marginRight: 5 },
 });

@@ -1,70 +1,22 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import useExpense from "../../hooks/useExpense";
+import AnalyticsCard from "./analyticsCard";
 
-const TRANSACTIONS = [
-  {
-    id: 1,
-    title: "MTN",
-    sub: "Airtime exchange",
-    amount: "3,000",
-    date: "10/01/26",
-    image: require("../../../assets/images/MTN.jpg"),
-  },
-  {
-    id: 2,
-    title: "Spotify",
-    sub: "Subscription",
-    amount: "4,400",
-    date: "13/01/26",
-    image: require("../../../assets/images/Spotify_01.jpg"),
-  },
-  {
-    id: 3,
-    title: "Netflix",
-    sub: "Subscription",
-    amount: "5,400",
-    date: "17/01/26",
-    image: require("../../../assets/images/Netflix.png"),
-  },
-];
+export default function TransactionsList({ label, data }) {
+  const { expenses } = useExpense();
 
-export default function TransactionsList({ label, onPress }) {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.container}
-    >
+    <View style={styles.container}>
       <View style={styles.recent}>
         <Text style={styles.recentText}>{label}</Text>
       </View>
 
-      {TRANSACTIONS.map((item) => (
-        <TouchableOpacity
-          style={styles.transactions}
-          key={item.id}
-          activeOpacity={0.8}
-          onPress={onPress}
-        >
-          <View style={styles.row}>
-            <Image source={item.image} style={styles.image} />
-            <View>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.sub}>{item.sub}</Text>
-            </View>
-          </View>
-          <View style={styles.rightBox}>
-            <Text style={styles.amount}>-Rs{item.amount}</Text>
-            <Text style={styles.date}>{item.date}</Text>
-          </View>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+      <FlatList
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <AnalyticsCard item={item} />}
+        data={data}
+      />
+    </View>
   );
 }
 

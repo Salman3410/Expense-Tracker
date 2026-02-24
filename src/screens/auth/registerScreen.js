@@ -29,6 +29,7 @@ export default function RegisterScreen({ navigation }) {
           iconName="user"
           value={name}
           onChangeText={setName}
+          showIcon={true}
         />
         <CustomInput
           placeholder="Email Address"
@@ -36,6 +37,7 @@ export default function RegisterScreen({ navigation }) {
           iconName="email"
           value={email}
           onChangeText={setEmail}
+          showIcon={true}
         />
         <CustomInput
           placeholder="Password"
@@ -44,6 +46,7 @@ export default function RegisterScreen({ navigation }) {
           secure={true}
           value={password}
           onChangeText={setPassword}
+          showIcon={true}
         />
         <CustomInput
           placeholder="Confirm Password"
@@ -52,6 +55,7 @@ export default function RegisterScreen({ navigation }) {
           secure={true}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
+          showIcon={true}
         />
 
         <View style={styles.terms}>
@@ -64,7 +68,7 @@ export default function RegisterScreen({ navigation }) {
 
         <PrimaryButton
           title="Sign Up"
-          onPress={() => console.log("Sign Up Pressed!")}
+          onPress={() => navigation.navigate("Login")}
         />
         <AuthFooter
           title="Already have an account?"

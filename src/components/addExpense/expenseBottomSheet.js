@@ -4,7 +4,7 @@ import BottomSheet, {
   BottomSheetView,
   BottomSheetModal,
 } from "@gorhom/bottom-sheet";
-import { useMemo, forwardRef, useCallback } from "react";
+import { forwardRef, useCallback } from "react";
 
 const categories = ["Shopping", "Subscription", "Exchange"];
 const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa"];

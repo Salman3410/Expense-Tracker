@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 export default function ExpenseNote({ note }) {
   return (
     <View style={styles.border}>
-      <Text style={styles.text}>{note}</Text>
+      <Text style={styles.text}>
+        {note && note.trim() !== "" ? note : "No note added"}
+      </Text>
     </View>
   );
 }
@@ -15,7 +17,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ccc",
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "400",
+    color: "#333",
   },
 });
