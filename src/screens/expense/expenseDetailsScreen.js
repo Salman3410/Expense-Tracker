@@ -15,19 +15,13 @@ export default function ExpenseDetailsScreen({ navigation, route }) {
 
   const { expenses, deleteExpense } = useExpense();
 
-  if (!id) {
-    console.log("ID not received");
-    return null;
-  }
+  if (!id) return null;
 
   const expense = expenses.find(
     (item) => item?.id && item.id.toString() === id.toString(),
   );
 
-  if (!expense) {
-    console.log("Expense not found");
-    return null;
-  }
+  if (!expense) return null;
 
   function handleDelete() {
     deleteExpense(expense.id);
@@ -41,7 +35,7 @@ export default function ExpenseDetailsScreen({ navigation, route }) {
     <View style={styles.container}>
       <DetailsHeader
         navigation={navigation}
-        title="Edit Expense"
+        title="Expense Details"
         onPress={handleEdit}
       />
       <ExpenseDetailsCard>
@@ -52,7 +46,7 @@ export default function ExpenseDetailsScreen({ navigation, route }) {
           label="Date"
           value={new Date(expense.date).toLocaleDateString()}
         />
-        <ExpenseField label="Amount" value={`-Rs${expense.amount}`} />
+        <ExpenseField label="Amount" value={`-Rs ${expense.amount}`} />
         <ExpensePayment payment={expense.payment} />
         {expense.image ? (
           <ReceiptImage source={{ uri: expense.image }} />
@@ -76,10 +70,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   noReceiptText: {
-    color: "#999",
+    color: "#888",
     fontSize: 14,
-    fontWeight: "500",
+    fontStyle: "italic",
   },
 });

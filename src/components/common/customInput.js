@@ -13,6 +13,7 @@ export default function CustomInput({
   secure = false,
   keyboardType,
   multiline,
+  autoCapitalize,
 }) {
   const [hidden, setHidden] = useState(secure);
   return (
@@ -27,6 +28,7 @@ export default function CustomInput({
         placeholderTextColor="#999"
         keyboardType={keyboardType}
         multiline={multiline}
+        autoCapitalize={autoCapitalize}
       />
 
       {/* Eye Toggle */}

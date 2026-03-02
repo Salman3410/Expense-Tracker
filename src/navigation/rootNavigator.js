@@ -1,23 +1,22 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import useAuth from "../hooks/useAuth";
 import AuthStack from "./authStack";
 import TabNavigator from "./tabNavigator";
 import AddExpenseScreen from "../screens/tabs/addExpenseScreen";
 import ExpenseDetailsScreen from "../screens/expense/expenseDetailsScreen";
 import EditExpenseScreen from "../screens/expense/editExpenseScreen";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
-  const { user } = useAuth();
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) return null;
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* Auth flow */}
-      {!user && <Stack.Screen name="Auth" component={AuthStack} />}
-
-      {/* App flow */}
-      {user && (
+      {user ? (
         <>
           <Stack.Screen name="AppTabs" component={TabNavigator} />
           <Stack.Screen
@@ -31,6 +30,8 @@ export default function RootNavigator() {
           />
           <Stack.Screen name="EditExpense" component={EditExpenseScreen} />
         </>
+      ) : (
+        <Stack.Screen name="Auth" component={AuthStack} />
       )}
     </Stack.Navigator>
   );

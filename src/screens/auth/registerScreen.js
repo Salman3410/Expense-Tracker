@@ -6,8 +6,10 @@ import AuthGreeting from "../../components/authScreen/authGreeting";
 import AuthFooter from "../../components/authScreen/authFooter";
 import { useState } from "react";
 import PrimaryButton from "../../components/authScreen/primaryButton";
+import useAuth from "../../hooks/useAuth";
 
 export default function RegisterScreen({ navigation }) {
+  const { register } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +40,7 @@ export default function RegisterScreen({ navigation }) {
           value={email}
           onChangeText={setEmail}
           showIcon={true}
+          autoCapitalize="none"
         />
         <CustomInput
           placeholder="Password"
@@ -68,7 +71,23 @@ export default function RegisterScreen({ navigation }) {
 
         <PrimaryButton
           title="Sign Up"
-          onPress={() => navigation.navigate("Login")}
+          onPress={async () => {
+            if (!name || !email || !password || !confirmPassword) {
+              alert("Please fill all fields");
+              return;
+            }
+            if (password !== confirmPassword) {
+              alert("Passwords do not match");
+              return;
+            }
+
+            try {
+              await register(name, email, password);
+              navigation.navigate("Login");
+            } catch (err) {
+              console.log("Registration error:", err);
+            }
+          }}
         />
         <AuthFooter
           title="Already have an account?"

@@ -7,18 +7,21 @@ import {
   Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 export default function HeaderBar() {
+  const { user } = useContext(AuthContext);
   return (
     <View style={styles.header}>
       <View style={styles.greetBox}>
         <Image
-          source={require("../../../assets/images/Mi.jpeg")}
+          source={require("../../../assets/images/user.jpg")}
           style={styles.image}
         />
         <View>
           <Text style={styles.greet}>Welcome Back!</Text>
-          <Text style={styles.name}>Sam</Text>
+          <Text style={styles.name}>{user?.name || "User"}</Text>
         </View>
       </View>
       <TouchableOpacity

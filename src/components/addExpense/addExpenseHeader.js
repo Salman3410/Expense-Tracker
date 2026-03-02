@@ -19,15 +19,15 @@ export default function AddExpenseHeader({ navigation, header }) {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 5,
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "600",
+    letterSpacing: 1,
   },
   backBtn: {
     backgroundColor: "#fff",

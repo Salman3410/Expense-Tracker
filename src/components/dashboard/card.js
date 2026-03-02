@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { AuthContext } from "../../context/authContext";
 
 export default function Card() {
+  const { user } = useContext(AuthContext);
   return (
     <View style={styles.card}>
       {/* Top */}
@@ -9,7 +12,7 @@ export default function Card() {
       </View>
       {/* Bottom */}
       <View style={styles.cardBottom}>
-        <Text style={styles.userName}>Salman Saeed</Text>
+        <Text style={styles.userName}>{user?.name || "No Name"}</Text>
         <Text style={styles.cardDate}>01/25</Text>
       </View>
     </View>

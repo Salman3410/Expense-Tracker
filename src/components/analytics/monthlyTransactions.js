@@ -15,6 +15,12 @@ export default function MonthlyTransactions() {
         data={monthlyData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <AnalyticsCard item={item} />}
+        style={styles.flatlist}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>No expenses yet</Text>
+          </View>
+        }
       />
     </View>
   );
@@ -30,5 +36,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     color: "#000080",
+  },
+  flatlist: {
+    paddingVertical: 6,
+  },
+  emptyContainer: {
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyText: {
+    fontSize: 14,
+    color: "#888",
+    fontStyle: "italic",
+    marginTop: 10,
   },
 });

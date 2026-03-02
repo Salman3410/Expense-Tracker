@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ExpenseChart from "../../components/analytics/expenseChart";
 import TransactionsTabs from "../transaction/transactionsTabs";
 

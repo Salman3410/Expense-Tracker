@@ -6,7 +6,7 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { forwardRef, useCallback } from "react";
 
-const categories = ["Shopping", "Subscription", "Exchange"];
+const categories = ["Shopping", "Subscription", "Groceries"];
 const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa"];
 
 const ExpenseBottomSheet = forwardRef(({ type, onSelect }, ref) => {

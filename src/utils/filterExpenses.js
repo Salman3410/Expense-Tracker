@@ -7,11 +7,17 @@ function toDate(value) {
 export function getWeeklyExpenses(expenses) {
   const today = new Date();
 
+  console.log(today.getDay());
+
+  const startOfWeek = today.getDay();
+
   return expenses.filter((item) => {
     const itemDate = toDate(item.date);
-    const diffDays = (today - itemDate) / (1000 * 60 * 60 * 24);
+    const diffDays = Math.abs(
+      Math.floor((today - itemDate) / (1000 * 60 * 60 * 24)),
+    );
 
-    return diffDays >= 0 && diffDays <= 7;
+    return diffDays >= 0 && diffDays <= startOfWeek - 1;
   });
 }
 

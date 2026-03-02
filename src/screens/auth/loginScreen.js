@@ -32,6 +32,7 @@ export default function LoginScreen({ navigation }) {
           value={email}
           onChangeText={setEmail}
           showIcon={true}
+          autoCapitalize="none"
         />
         <CustomInput
           placeholder="Password"
@@ -52,7 +53,17 @@ export default function LoginScreen({ navigation }) {
           />
         </View>
 
-        <PrimaryButton title="Login" onPress={() => login(email, password)} />
+        <PrimaryButton
+          title="Login"
+          onPress={() => {
+            if (!email || !password) {
+              alert("Enter email and password");
+              return;
+            }
+            login(email.trim(), password.trim());
+            console.log("Trying login with:", email, password);
+          }}
+        />
         <AuthFooter
           title="Don't have an account?"
           sub="Register"

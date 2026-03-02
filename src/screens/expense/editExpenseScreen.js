@@ -80,7 +80,7 @@ export default function EditExpenseScreen({ navigation }) {
       <TitleInput value={title} onChangeText={setTitle} />
       <NotesInput value={note} onChangeText={setNote} />
       <CategoryInput value={category} onPress={() => openSheet("category")} />
-      <DateInput value={date} onChangeText={setDate} />
+      <DateInput value={date} onChange={setDate} />
       <PaymentInput value={payment} onPress={() => openSheet("payment")} />
       <ImageInput image={image} setImage={setImage} />
       <CustomButton title="Update Expense" onPress={handleUpdate} />
