@@ -15,7 +15,8 @@ export default function MonthlyTransactions() {
         data={monthlyData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <AnalyticsCard item={item} />}
-        style={styles.flatlist}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 70 }}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>No expenses yet</Text>
@@ -28,7 +29,7 @@ export default function MonthlyTransactions() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 40,
+    flex: 1,
   },
   heading: {
     paddingHorizontal: 20,
@@ -36,9 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     color: "#000080",
-  },
-  flatlist: {
-    paddingVertical: 6,
   },
   emptyContainer: {
     padding: 20,

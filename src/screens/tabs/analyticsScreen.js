@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import ExpenseChart from "../../components/analytics/expenseChart";
 import TransactionsTabs from "../transaction/transactionsTabs";
 
@@ -19,6 +19,7 @@ export default function AnalyticsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 10,
   },
   tabsContainer: {
     flex: 1,
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
+    marginTop: 10,
   },
   headerText: {
     fontSize: 22,

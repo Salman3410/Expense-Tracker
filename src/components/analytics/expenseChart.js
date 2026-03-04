@@ -79,7 +79,7 @@ export default function ExpenseChart() {
         donut
         showText
         textColor="white"
-        textSize={14}
+        textSize={12}
         radius={75}
         innerRadius={45}
       />
