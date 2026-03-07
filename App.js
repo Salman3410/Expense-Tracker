@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./src/navigation/rootNavigator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { StatusBar } from "expo-status-bar";
 import { ExpenseProvider } from "./src/context/expenseContext";

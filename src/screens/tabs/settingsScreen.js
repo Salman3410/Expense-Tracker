@@ -25,10 +25,11 @@ const styles = StyleSheet.create({
   header: {
     paddingVertical: 10,
     alignItems: "center",
+    marginTop: 10,
   },
   headerText: {
     fontSize: 22,
-    fontWeight: "600",
     letterSpacing: 1,
+    fontWeight: "500",
   },
 });

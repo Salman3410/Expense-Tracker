@@ -1,32 +1,22 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import { StyleSheet, View, TouchableOpacity, Alert, Text } from "react-native";
+import { Ionicons, Octicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HeaderBar() {
-  const { user } = useContext(AuthContext);
+  const navigation = useNavigation();
+
+  const openDrawer = () => {
+    navigation.getParent()?.openDrawer();
+  };
   return (
     <View style={styles.header}>
-      <View style={styles.greetBox}>
-        <Image
-          source={require("../../../assets/images/user.jpg")}
-          style={styles.image}
-        />
-        <View>
-          <Text style={styles.greet}>Welcome Back!</Text>
-          <Text style={styles.name}>{user?.name || "User"}</Text>
-        </View>
-      </View>
+      <TouchableOpacity activeOpacity={0.8} onPress={openDrawer}>
+        <Octicons name="three-bars" size={24} color="black" />
+      </TouchableOpacity>
+      <Text style={styles.dashboard}>Dashboard</Text>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => Alert.alert("No Notification Yet")}
+        onPress={() => Alert.alert("No notifications yet")}
       >
         <Ionicons name="notifications-outline" size={24} color="black" />
       </TouchableOpacity>
@@ -39,26 +29,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
     paddingVertical: 10,
+    marginTop: 10,
   },
-  greetBox: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 40,
-  },
-  greet: {
-    color: "#999",
-    fontSize: 15,
-    fontWeight: "400",
-  },
-  name: {
-    fontSize: 15,
+  dashboard: {
+    fontSize: 22,
+    letterSpacing: 1,
     fontWeight: "500",
   },
 });

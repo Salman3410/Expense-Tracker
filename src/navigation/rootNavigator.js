@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthStack from "./authStack";
-import TabNavigator from "./tabNavigator";
 import AddExpenseScreen from "../screens/tabs/addExpenseScreen";
 import ExpenseDetailsScreen from "../screens/expense/expenseDetailsScreen";
 import EditExpenseScreen from "../screens/expense/editExpenseScreen";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import DrawerNavigator from "./drawerNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ export default function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {user ? (
         <>
-          <Stack.Screen name="AppTabs" component={TabNavigator} />
+          <Stack.Screen name="MainApp" component={DrawerNavigator} />
           <Stack.Screen
             name="AddExpense"
             component={AddExpenseScreen}
