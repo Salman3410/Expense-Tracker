@@ -50,7 +50,7 @@ export default function ExpenseChart() {
 
   return (
     <View style={styles.expense}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={styles.category}>
         <View style={styles.row}>
           <Feather name="shopping-bag" size={20} color="black" />
           <Text style={styles.title}>Shopping</Text>
@@ -99,6 +99,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     elevation: 2,
+  },
+  category: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    marginBottom: 5,
   },
   row: {
     borderRightWidth: 1,

@@ -7,7 +7,7 @@ import BottomSheet, {
 import { forwardRef, useCallback } from "react";
 
 const categories = ["Shopping", "Subscription", "Groceries"];
-const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa"];
+const payments = ["Debit Card", "Credit Card", "JazzCash", "EasyPaisa", "Cash"];
 
 const ExpenseBottomSheet = forwardRef(({ type, onSelect }, ref) => {
   const data =
