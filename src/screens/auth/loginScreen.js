@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image, Alert } from "react-native";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
 import { useState } from "react";
@@ -17,6 +17,10 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../../assets/images/logo.png")}
+        style={styles.image}
+      />
       <BrandHeader title="BUDGET & CO." />
       <AuthGreeting
         title="Welcome Back!"
@@ -57,7 +61,7 @@ export default function LoginScreen({ navigation }) {
           title="Login"
           onPress={() => {
             if (!email || !password) {
-              alert("Enter email and password");
+              Alert.alert("Login failed", "Enter email and password");
               return;
             }
             login(email.trim(), password.trim());
@@ -79,6 +83,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
   },
   input: {
     width: "100%",

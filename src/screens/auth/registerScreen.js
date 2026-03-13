@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image, Alert } from "react-native";
 import { Fontisto, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomInput from "../../components/common/customInput";
 import BrandHeader from "../../components/authScreen/brandHeader";
@@ -17,6 +17,10 @@ export default function RegisterScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../../assets/images/logo.png")}
+        style={styles.image}
+      />
       <BrandHeader title="BUDGET & CO." />
       <AuthGreeting
         title="Create Your Account"
@@ -73,7 +77,7 @@ export default function RegisterScreen({ navigation }) {
           title="Sign Up"
           onPress={async () => {
             if (!name || !email || !password || !confirmPassword) {
-              alert("Please fill all fields");
+              Alert.alert("Register failed", "Please fill all fields");
               return;
             }
             if (password !== confirmPassword) {
@@ -104,6 +108,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
   },
   header: {
     fontSize: 30,

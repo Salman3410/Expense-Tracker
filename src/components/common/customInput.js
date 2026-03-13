@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
   },
   email: {
     flex: 1,

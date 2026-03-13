@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderColor: "#ccc",
+    borderStyle: "dashed",
   },
   btnText: {
     fontSize: 15,

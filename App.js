@@ -7,6 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import { ExpenseProvider } from "./src/context/expenseContext";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthProvider } from "./src/context/authContext";
+import { PaperProvider } from "react-native-paper";
 
 export default function App() {
   return (
@@ -16,8 +17,10 @@ export default function App() {
           <ExpenseProvider>
             <NavigationContainer>
               <SafeAreaView style={{ flex: 1 }}>
-                <StatusBar style="dark" />
-                <RootNavigator />
+                <PaperProvider>
+                  <StatusBar style="dark" />
+                  <RootNavigator />
+                </PaperProvider>
               </SafeAreaView>
             </NavigationContainer>
           </ExpenseProvider>

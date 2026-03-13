@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { AuthContext } from "../../context/authContext";
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function CustomDrawer(props) {
   const { user, logout } = useContext(AuthContext);
@@ -10,7 +11,12 @@ export default function CustomDrawer(props) {
   return (
     <DrawerContentScrollView {...props}>
       {/* Profile  */}
-      <View style={styles.profile}>
+      <LinearGradient
+        style={styles.profile}
+        colors={["#000428", "#004e92"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
         <Image
           source={require("../../../assets/images/user.jpg")}
           style={styles.image}
@@ -20,7 +26,7 @@ export default function CustomDrawer(props) {
           <Text style={styles.welcome}>Welcome Back!</Text>
           <Text style={styles.name}>{user?.name || "User"}</Text>
         </View>
-      </View>
+      </LinearGradient>
 
       {/* Tabs Button*/}
       <View style={styles.menu}>
@@ -75,7 +81,6 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     alignItems: "center",
-    backgroundColor: "#000080",
     flexDirection: "row",
     gap: 5,
     borderRadius: 20,

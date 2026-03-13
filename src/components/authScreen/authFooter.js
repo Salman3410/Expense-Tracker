@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     gap: 2,
     marginTop: 10,
     paddingHorizontal: 35,
+    marginBottom: 70,
   },
   regTagline: {
     fontSize: 16,

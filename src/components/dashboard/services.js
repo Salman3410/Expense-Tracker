@@ -31,7 +31,7 @@ function ServiceCard({ item }) {
         <Text style={styles.serviceSub}>{item.subtitle}</Text>
       </View>
       <TouchableOpacity activeOpacity={0.8}>
-        <FontAwesome name="long-arrow-right" size={22} color="#fff" />
+        <FontAwesome name="long-arrow-right" size={22} color="#000" />
       </TouchableOpacity>
     </View>
   );
@@ -61,14 +61,18 @@ const styles = StyleSheet.create({
   },
   serviceCard: {
     width: "100%",
-    backgroundColor: "#000080",
-    borderRadius: 16,
+    backgroundColor: "#fff",
+    borderRadius: 18,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 16,
     paddingVertical: 8,
     marginTop: 12,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
   },
   noteImage: {
     width: 60,
@@ -80,12 +84,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   serviceTitle: {
-    color: "#fff",
+    color: "#0F172A",
     fontSize: 16,
     fontWeight: "600",
   },
   serviceSub: {
-    color: "#9aa0ff",
+    color: "#64748B",
     fontSize: 13,
   },
 });
