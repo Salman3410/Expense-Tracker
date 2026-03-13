@@ -49,7 +49,23 @@ export default function ExpenseChart() {
   }, [totals, totalExpense]);
 
   return (
-    <View style={styles.expense}>
+    <View>
+      <View style={styles.expense}>
+        <View>
+          <Text style={styles.totalText}>Total Spent</Text>
+          <Text style={styles.amountText}>Rs {totalExpense}</Text>
+        </View>
+        <PieChart
+          data={pieData}
+          donut
+          showText
+          textColor="white"
+          textSize={12}
+          radius={65}
+          innerRadius={35}
+        />
+      </View>
+
       <View style={styles.category}>
         <View style={styles.row}>
           <Feather name="shopping-bag" size={20} color="black" />
@@ -73,29 +89,20 @@ export default function ExpenseChart() {
           <Text style={styles.amount}>Rs {totals["Groceries"] || 0}</Text>
         </View>
       </View>
-
-      <PieChart
-        data={pieData}
-        donut
-        showText
-        textColor="white"
-        textSize={12}
-        radius={75}
-        innerRadius={45}
-      />
-
-      <Text style={styles.totalText}>Total: Rs {totalExpense}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   expense: {
-    alignItems: "center",
     width: "90%",
+    flexDirection: "row",
     alignSelf: "center",
+
+    justifyContent: "space-between",
     backgroundColor: "#fff",
     paddingVertical: 10,
+    padding: 20,
     borderRadius: 10,
     marginTop: 10,
     elevation: 2,
@@ -105,6 +112,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#eee",
     marginBottom: 5,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    width: "90%",
+    alignSelf: "center",
+    marginTop: 10,
+    elevation: 2,
+    justifyContent: "space-between",
+    padding: 20,
   },
   row: {
     borderRightWidth: 1,
@@ -125,8 +140,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   totalText: {
-    marginTop: 10,
-    fontSize: 16,
+    fontSize: 15,
+    marginTop: 5,
+  },
+  amountText: {
     fontWeight: "bold",
+    fontSize: 22,
   },
 });

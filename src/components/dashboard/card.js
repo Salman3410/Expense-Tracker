@@ -23,7 +23,7 @@ export default function Card() {
       >
         {/* Top */}
         <View style={styles.cardTop}>
-          <Text style={styles.cardType}>Balance</Text>
+          <Text style={styles.cardType}>Debit</Text>
           <Text style={styles.cardName}>VISA</Text>
         </View>
 

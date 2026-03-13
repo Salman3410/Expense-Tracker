@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Feather } from "@expo/vector-icons";
 
 const SERVICES = [
   {
@@ -31,7 +31,7 @@ function ServiceCard({ item }) {
         <Text style={styles.serviceSub}>{item.subtitle}</Text>
       </View>
       <TouchableOpacity activeOpacity={0.8}>
-        <FontAwesome name="long-arrow-right" size={22} color="#000" />
+        <Feather name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
     </View>
   );

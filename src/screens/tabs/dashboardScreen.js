@@ -3,7 +3,6 @@ import { Feather } from "@expo/vector-icons";
 import Card from "../../components/dashboard/card";
 import Services from "../../components/dashboard/services";
 import HeaderBar from "../../components/dashboard/headerBar";
-import CustomButton from "../../components/common/customButton";
 
 export default function DashboardScreen({ navigation }) {
   return (
@@ -14,10 +13,6 @@ export default function DashboardScreen({ navigation }) {
       <HeaderBar />
       <Card />
       <Services />
-      {/* <CustomButton
-        title="Add Expense"
-        onPress={() => navigation.navigate("AddExpense")}
-      /> */}
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.8}
