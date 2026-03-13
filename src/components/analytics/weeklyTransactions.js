@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     paddingHorizontal: 20,
-    marginTop: 30,
+    marginTop: 10,
     fontSize: 16,
     fontWeight: "500",
     color: "#000080",

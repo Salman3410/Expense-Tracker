@@ -8,6 +8,33 @@ import {
 import useExpense from "../../hooks/useExpense";
 import { PieChart } from "react-native-gifted-charts";
 
+const CATEGORIES = [
+  {
+    key: "Shopping",
+    title: "Shopping",
+    icon: <Feather name="shopping-bag" size={20} color="#4A6CF7" />,
+    color: "#4A6CF7",
+  },
+  {
+    key: "Subscription",
+    title: "Subscription",
+    icon: <FontAwesome5 name="mobile-alt" size={20} color="#F59E0B" />,
+    color: "#F59E0B",
+  },
+  {
+    key: "Groceries",
+    title: "Groceries",
+    icon: (
+      <MaterialCommunityIcons
+        name="silverware-fork-knife"
+        size={20}
+        color="#EF4444"
+      />
+    ),
+    color: "#EF4444",
+  },
+];
+
 export default function ExpenseChart() {
   const { expenses } = useExpense();
 
@@ -33,7 +60,7 @@ export default function ExpenseChart() {
       },
       {
         value: totals["Subscription"] || 0,
-        color: "#ee5b2f",
+        color: "#F59E0B",
         text: `${Math.round(
           ((totals["Subscription"] || 0) / totalExpense) * 100,
         )}%`,
@@ -67,27 +94,36 @@ export default function ExpenseChart() {
       </View>
 
       <View style={styles.category}>
-        <View style={styles.row}>
-          <Feather name="shopping-bag" size={20} color="black" />
-          <Text style={styles.title}>Shopping</Text>
-          <Text style={styles.amount}>Rs {totals["Shopping"] || 0}</Text>
-        </View>
+        {CATEGORIES.map((cat) => {
+          const value = totals[cat.key] || 0;
+          const percent =
+            totalExpense === 0 ? 0 : Math.round((value / totalExpense) * 100);
 
-        <View style={styles.row}>
-          <FontAwesome5 name="mobile-alt" size={20} color="black" />
-          <Text style={styles.title}>Subscription</Text>
-          <Text style={styles.amount}>Rs {totals["Subscription"] || 0}</Text>
-        </View>
+          return (
+            <View key={cat.key} style={styles.categoryItem}>
+              <View style={styles.iconBox}>{cat.icon}</View>
 
-        <View style={styles.lastRow}>
-          <MaterialCommunityIcons
-            name="silverware-fork-knife"
-            size={20}
-            color="black"
-          />
-          <Text style={styles.title}>Groceries</Text>
-          <Text style={styles.amount}>Rs {totals["Groceries"] || 0}</Text>
-        </View>
+              <View style={styles.categoryContent}>
+                <View style={styles.categoryHeader}>
+                  <Text style={styles.title}>{cat.title}</Text>
+
+                  <Text style={styles.amount}>
+                    Rs {value} • {percent}%
+                  </Text>
+                </View>
+
+                <View style={styles.progressBackground}>
+                  <View
+                    style={[
+                      styles.progressFill,
+                      { width: `${percent}%`, backgroundColor: cat.color },
+                    ]}
+                  />
+                </View>
+              </View>
+            </View>
+          );
+        })}
       </View>
     </View>
   );
@@ -98,46 +134,62 @@ const styles = StyleSheet.create({
     width: "90%",
     flexDirection: "row",
     alignSelf: "center",
-
     justifyContent: "space-between",
     backgroundColor: "#fff",
     paddingVertical: 10,
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 16,
     marginTop: 10,
     elevation: 2,
   },
   category: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
-    marginBottom: 5,
-    backgroundColor: "#fff",
-    borderRadius: 10,
     width: "90%",
     alignSelf: "center",
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 15,
     marginTop: 10,
     elevation: 2,
+  },
+  categoryItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  iconBox: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: "#F3F4F6",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+  categoryContent: {
+    flex: 1,
+  },
+  categoryHeader: {
+    flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
-  },
-  row: {
-    borderRightWidth: 1,
-    borderRightColor: "#eee",
-    padding: 8,
-    alignItems: "center",
-  },
-  lastRow: {
-    padding: 8,
-    alignItems: "center",
+    marginBottom: 6,
   },
   title: {
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 15,
+    fontWeight: "600",
   },
   amount: {
-    color: "#999",
-    marginBottom: 10,
+    fontSize: 14,
+    color: "#6B7280",
+  },
+  progressBackground: {
+    height: 6,
+    backgroundColor: "#E5E7EB",
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+  progressFill: {
+    height: 6,
+    borderRadius: 10,
   },
   totalText: {
     fontSize: 15,

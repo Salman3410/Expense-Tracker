@@ -11,7 +11,7 @@ export default function TransactionsTabs() {
         tabBarStyle: {
           backgroundColor: "#eee",
           marginHorizontal: 20,
-          marginTop: 15,
+          marginTop: 5,
           borderRadius: 10,
           elevation: 1,
         },
