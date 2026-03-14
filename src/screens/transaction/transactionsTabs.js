@@ -12,17 +12,20 @@ export default function TransactionsTabs() {
           backgroundColor: "#eee",
           marginHorizontal: 20,
           marginTop: 5,
-          borderRadius: 10,
-          elevation: 1,
+          borderRadius: 24,
+          elevation: 2,
+          borderWidth: 1,
+          borderColor: "#fff",
         },
         tabBarIndicatorStyle: {
           backgroundColor: "#000080",
           height: "100%",
-          borderRadius: 10,
+          borderRadius: 24,
         },
         tabBarLabelStyle: { fontWeight: "700" },
         tabBarActiveTintColor: "#fff",
         tabBarInactiveTintColor: "#777",
+        swipeEnabled: false,
       }}
     >
       <Tab.Screen name="Weekly" component={WeeklyTransactions} />

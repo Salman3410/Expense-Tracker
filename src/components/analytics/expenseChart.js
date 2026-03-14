@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
   totalText: {
     fontSize: 15,
     marginTop: 5,
+    fontWeight: "500",
   },
   amountText: {
     fontWeight: "bold",
